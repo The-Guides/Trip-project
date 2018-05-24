@@ -7,7 +7,7 @@ import { FigureLandingPageComponent } from './figure-landing-page/figure-landing
 import { CameraComponent } from './camera/camera.component';
 import { FigureInfoService } from '../services/figure-info.service';
 import { GoogleVisionService } from '../services/google-vision.service';
-import { Dispatcher } from './tokens';
+import { FigureViewModelSelector } from './tokens';
 import { FigureViewComponent } from './figure-view/figure-view.component';
 
 @NgModule({
@@ -30,9 +30,9 @@ import { FigureViewComponent } from './figure-view/figure-view.component';
     GoogleVisionService,
     FigureInfoService,
     {
-      provide: Dispatcher, useFactory: (store) => store.dispatch,
+      provide: FigureViewModelSelector, useFactory: (store) => store.select((state) => state.figure.figureViewModel),
       deps: [Store]
-    },
+    }
   ],
 })
 export class FigureModule { }
