@@ -24,7 +24,6 @@ export class FigureLandingPageComponent implements AfterViewInit {
 
   public showDivs(n) {
     // let i;
-    // debugger
     // if (n > this.elements.length) {
     //   this.slideIndex = 1
     // }
@@ -32,7 +31,6 @@ export class FigureLandingPageComponent implements AfterViewInit {
     //   this.slideIndex = this.elements.length
     // }
     // this.elements.forEach(element => {
-    //   debugger
     //   element.nativeElement.style.display = "none";
     // });
     // if (this.elements[this.slideIndex - 1] != null) {
