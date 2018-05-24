@@ -10,6 +10,7 @@ import { CameraComponent } from './camera/camera.component';
 import { FigureInfoService } from '../services/figure-info.service';
 import { GoogleVisionService } from '../services/google-vision.service';
 import { Dispatcher } from './tokens';
+import { FigureViewComponent } from './figure-view/figure-view.component';
 
 @NgModule({
   imports: [
@@ -21,6 +22,7 @@ import { Dispatcher } from './tokens';
     ReadComponent,
     FigureLandingPageComponent,
     CameraComponent,
+    FigureViewComponent,
   ],
   exports: [
     FigureComponent,
@@ -28,6 +30,7 @@ import { Dispatcher } from './tokens';
     ReadComponent,
     FigureLandingPageComponent,
     CameraComponent,
+    FigureViewComponent,
   ],
   providers: [
     GoogleVisionService,

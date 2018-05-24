@@ -2,8 +2,9 @@ import { Injectable } from '@angular/core';
 import { Actions, Effect } from '@ngrx/effects';
 import { map, switchMap, tap } from 'rxjs/operators';
 import { GoogleVisionService, GoogleVisionResponse } from '../services/google-vision.service';
-import { FiguresActions, FindFigure } from '../actions/figure.actions';
+import { FiguresActions, FindFigure, LoadFigureData } from '../actions/figure.actions';
 import { FigureInfoService } from '../services/figure-info.service';
+import { Observable, from } from 'rxjs';
 
 @Injectable()
 export class FigureEffects {
@@ -13,18 +14,13 @@ export class FigureEffects {
         // Listen for the 'LOGIN' action
         .ofType(FiguresActions.FIND_FIGURE)
         .pipe(
-            switchMap((action: FindFigure) => {
-                return this.googleService.findFigure(action.imgBase64);
-            }),
+            switchMap((action: FindFigure) => this.googleService.findFigure(action.imgBase64)),
             map((responses: GoogleVisionResponse) => {
                 const rawId = responses.responses[0].landmarkAnnotations[0].mid;
                 return rawId.substring(rawId.lastIndexOf('/'));
             }),
             switchMap(figureId => this.figureService.getFigureDetails(figureId)),
-            map((response) => {
-                debugger
-                console.log(response);
-            }));
+            switchMap((response) => from([new LoadFigureData(response)])));
 
     constructor(
         private actions$: Actions,

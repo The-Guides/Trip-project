@@ -3,6 +3,8 @@ import { Dispatcher } from './tokens';
 import { FindFigure } from '../actions/figure.actions';
 import { AppState } from '../app.state';
 import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
+import { Figure } from '../models/figure.model';
 
 @Component({
   selector: 'app-figure',
@@ -10,8 +12,11 @@ import { Store } from '@ngrx/store';
   styleUrls: ['./figure.component.css']
 })
 export class FigureComponent {
+  public figureViewModel: Observable<Figure>;
 
-  constructor(@Inject(forwardRef(() => Dispatcher)) private dispatcher, private store: Store<AppState>) { }
+  constructor(private store: Store<AppState>) {
+    this.figureViewModel = store.select('figure');
+  }
 
   public findPicture(base64: string) {
     const comaIndex = base64.indexOf(',');

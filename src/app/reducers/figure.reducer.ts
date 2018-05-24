@@ -6,7 +6,7 @@ import { FiguresActions, LoadFigureData } from '../actions/figure.actions';
 const initialState: Figure = {
     name: '',
     description: '',
-    imgUrl: ''
+    images: ['']
 };
 
 function loadFigureData(state: Figure, action: any) {
@@ -20,14 +20,4 @@ const actionsMap = {
 // Section 2
 export function figureReducers(state: Figure = initialState, action: Action) {
     return actionsMap[action.type] ? actionsMap[action.type](state, action) : state;
-}
-
-export function getPropertyName(propertyFunction) {
-    return /\.([^.;]+);?\s*\}$/.exec(propertyFunction.toString())[1];
-}
-
-export function getNewStateWithChangeValue(state, propName, value) {
-    const newState = Object.assign({}, state);
-    newState[propName] = value;
-    return newState;
 }

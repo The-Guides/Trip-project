@@ -11,6 +11,9 @@ import { FigureComponent } from './figure/figure.component';
 import { FigureEffects } from './effects/figure.effects';
 import { GoogleVisionService } from './services/google-vision.service';
 import { HttpClientModule } from '@angular/common/http';
+import { AngularFireDatabase } from 'angularfire2/database';
+import { AngularFireModule } from 'angularfire2';
+import { environment } from '../environments/environment.prod';
 
 @NgModule({
   declarations: [
@@ -23,8 +26,10 @@ import { HttpClientModule } from '@angular/common/http';
     StoreModule.forRoot({
       figure: figureReducers
     }),
-    EffectsModule.forRoot([FigureEffects])
+    EffectsModule.forRoot([FigureEffects]),
+    AngularFireModule.initializeApp(environment.firebase)
   ],
+  providers: [AngularFireDatabase],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

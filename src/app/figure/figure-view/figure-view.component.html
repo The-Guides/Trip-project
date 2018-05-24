@@ -1,0 +1,13 @@
+<h1>
+  {{viewModel.name}}
+</h1>
+<h2>
+  {{viewModel.description}}
+</h2>
+
+<ul>
+
+  <li *ngFor="let imgUrl of viewModel.images">
+    <img *ngIf="imgUrl!=null" [src]="imgUrl" alt="">
+  </li>
+</ul>
