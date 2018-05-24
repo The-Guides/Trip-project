@@ -1,14 +1,36 @@
 <!doctype html>
 <html lang="en">
-<head>
-  <meta charset="utf-8">
-  <title>GuidHackaton</title>
-  <base href="/">
 
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
+<head>
+    <meta charset="utf-8">
+    <title>GuidHackaton</title>
+    <base href="/">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
-<body>
-  <app-root></app-root>
+
+<body class="w3-content w3-black" style="max-width:1500px;">
+    <app-root></app-root>
+
+    <!-- Firebase init  -->
+    <script src="https://www.gstatic.com/firebasejs/5.0.3/firebase.js"></script>
+    <script>
+        // Initialize Firebase
+        var config = {
+            apiKey: "AIzaSyBOG9LZXqqVGOi7U6xFiN4J0_8ZhrLAfWI",
+            authDomain: "trip-205110.firebaseapp.com",
+            databaseURL: "https://trip-205110.firebaseio.com",
+            projectId: "trip-205110",
+            storageBucket: "trip-205110.appspot.com",
+            messagingSenderId: "1069287563437"
+        };
+        firebase.initializeApp(config);
+    </script>
+    <!-- Firebase init end -->
 </body>
+
 </html>
