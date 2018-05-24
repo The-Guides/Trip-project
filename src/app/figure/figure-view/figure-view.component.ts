@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, OnChanges } from '@angular/core';
 import { Figure } from '../../models/figure.model';
+import { FigureViewModel } from './figure-view.viewmodel';
 
 @Component({
   selector: 'app-figure-view',
@@ -9,7 +10,7 @@ import { Figure } from '../../models/figure.model';
 export class FigureViewComponent implements OnChanges {
 
   @Input()
-  public viewModel: Figure;
+  public viewModel: FigureViewModel;
 
   constructor() { }
   ngOnChanges(): void {

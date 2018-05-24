@@ -27,9 +27,9 @@ export class CameraComponent {
       const comaIndex = contents.indexOf(',');
       contents = contents.substring(comaIndex + 1);
       //////
-      this.findPicture.emit(contents);
+      if (contents != null && contents.length > 0) {
+        this.findPicture.emit(contents);
+      }
     };
-
   }
-
 }

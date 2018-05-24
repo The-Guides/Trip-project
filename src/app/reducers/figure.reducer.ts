@@ -1,16 +1,19 @@
 import { Action } from '@ngrx/store';
 import { Figure } from './../models/figure.model';
 import { FiguresActions, LoadFigureData } from '../actions/figure.actions';
+import { getPropertyName, getNewStateWithChangeValue } from '../shared/functions';
 
 // Section 1
 const initialState: Figure = {
-    name: '',
-    description: '',
-    images: ['']
+    figureViewModel: {
+        name: '',
+        description: '',
+        images: ['']
+    }
 };
 
 function loadFigureData(state: Figure, action: any) {
-    return action.figureData;
+    return getNewStateWithChangeValue(state, getPropertyName(() => state.figureViewModel), action.figureData);
 }
 
 const actionsMap = {

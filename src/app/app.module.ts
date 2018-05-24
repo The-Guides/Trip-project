@@ -6,7 +6,6 @@ import { EffectsModule } from '@ngrx/effects';
 import { AppComponent } from './app.component';
 import { figureReducers } from './reducers/figure.reducer';
 import { FigureModule } from './figure/figure.module';
-import { WriteComponent } from './figure/write/write.component';
 import { FigureComponent } from './figure/figure.component';
 import { FigureEffects } from './effects/figure.effects';
 import { GoogleVisionService } from './services/google-vision.service';

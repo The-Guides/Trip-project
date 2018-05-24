@@ -7,7 +7,7 @@
 
 <ul>
 
-  <li *ngFor="let imgUrl of viewModel.images">
+  <li *ngFor="let imgUrl of viewModel?.images">
     <img *ngIf="imgUrl!=null" [src]="imgUrl" alt="">
   </li>
 </ul>
