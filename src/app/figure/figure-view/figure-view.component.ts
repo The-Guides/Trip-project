@@ -7,13 +7,9 @@ import { FigureViewModel } from './figure-view.viewmodel';
   templateUrl: './figure-view.component.html',
   styleUrls: ['./figure-view.component.css']
 })
-export class FigureViewComponent implements OnChanges {
+export class FigureViewComponent {
 
   @Input()
   public viewModel: FigureViewModel;
 
-  constructor() { }
-  ngOnChanges(): void {
-    console.log(this.viewModel);
-  }
 }
