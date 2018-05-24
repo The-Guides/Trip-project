@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { AppState } from '../../app.state';
-import { AddTutorial } from '../../actions/figure.actions';
 
 @Component({
   selector: 'app-write',
@@ -14,6 +13,5 @@ export class WriteComponent {
   }
 
   private addTutorial(name: string, url: string) {
-    this.store.dispatch(new AddTutorial({ name: name, description: 'some', imgUrl: url }));
   }
 }

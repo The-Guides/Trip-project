@@ -5,26 +5,21 @@ import { Figure } from './../models/figure.model';
 // Section 2
 
 export const FiguresActions = {
-    FIND_FIGURE: 'This will make a search for the figure'
+    FIND_FIGURE: 'This will make a search for the figure',
+    FETCH_FIGURE_DATA: 'This will fetch the data for the figure from our db',
+    LOAD_FIGURE_DATA: 'This will load the data to the store',
 };
-
-export const ADD_TUTORIAL = '[TUTORIAL] Add';
-export const REMOVE_TUTORIAL = '[TUTORIAL] Remove';
-
-// Section 3
-export class AddTutorial implements Action {
-    readonly type = ADD_TUTORIAL;
-
-    constructor(public payload: Figure) { }
-}
-
-export class RemoveTutorial implements Action {
-    readonly type = REMOVE_TUTORIAL;
-
-    constructor(public payload: number) { }
-}
 
 export class FindFigure implements Action {
     readonly type = FiguresActions.FIND_FIGURE;
+    constructor(public imgBase64: string) { }
 }
-export type Actions = AddTutorial | RemoveTutorial;
+
+export class FetchFigureData implements Action {
+    readonly type = FiguresActions.FETCH_FIGURE_DATA;
+}
+
+export class LoadFigureData implements Action {
+    readonly type = FiguresActions.LOAD_FIGURE_DATA;
+    constructor(public figureData: any) { }
+}
