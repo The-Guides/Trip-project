@@ -1,3 +1,6 @@
-<input type="file" accept="image/*;capture=camera" #input>
+<label for="file-upload" accept="image/*;capture=camera" class="w3-button w3-block w3-black w3-hide-large w3-hide-medium">
+  <i class="fa fa-cloud-upload"></i> Upload file
+</label>
+<input id="file-upload" type="file" accept="image/*;capture=camera" #input/>
 <br>
-<button (click)="sendImage()">Send img</button>
+<button class="w3-button w3-block w3-black w3-hide-large w3-hide-medium" (click)="sendImage()">Send your image</button>
