@@ -1,4 +1,5 @@
 input[type="file"] {
+<<<<<<< HEAD
     display: none;
 }
 .custom-file-upload {
@@ -7,3 +8,7 @@ input[type="file"] {
     padding: 6px 12px;
     cursor: pointer;
 }
+=======
+  display: none;
+}
+>>>>>>> 6e25db6b2fc3e9886886f90106b4e7a705f8557d
