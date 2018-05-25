@@ -10,6 +10,8 @@ import { FigureViewModel } from './figure-view.viewmodel';
 export class FigureViewComponent {
 
   public selectedImgIndex = 0;
+  public showMessage: boolean;
+
   private imagesLength = -1;
   private _viewModel: FigureViewModel;
 
@@ -21,7 +23,12 @@ export class FigureViewComponent {
 
   @Input()
   public set viewModel(viewModel) {
-    if (viewModel.images.length > 0) {
+    this.showMessage = viewModel != null
+      && viewModel.images != null
+      && viewModel.images.length > 0;
+    // If there is no images we consider that there is no
+    // that there is no figure and we show message
+    if (this.showMessage) {
       this.imagesLength = viewModel.images.length;
     }
     this._viewModel = viewModel;

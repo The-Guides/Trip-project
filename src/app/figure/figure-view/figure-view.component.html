@@ -1,16 +1,16 @@
-<div class="popup-img" #background>
+<div class="popup-background" #background>
   <div>
     <span (click)="hidePopup()" class="close">X</span>
-    <h1 class="figure-name">
+    <h1 class="figure-name" *ngIf="showMessage">
       {{viewModel.name}}
     </h1>
-    <h2 class="figure-description">
+    <h2 class="figure-description" [ngClass]="showMessage ? 'figure-description': 'not-found-message'">
       {{viewModel.description}}
     </h2>
   </div>
-  <div class="gallery">
+  <div class="gallery" *ngIf="showMessage">
     <button (click)="prevImg()" class="flex">Left</button>
-    <img class="image" class="img" *ngIf="viewModel?.images[selectedImgIndex]!=null" [src]="viewModel?.images[selectedImgIndex]">
+    <img class="image" class="img" [src]="viewModel?.images[selectedImgIndex]">
     <button (click)="nextImg()" class="flex">Right</button>
   </div>
 </div>
