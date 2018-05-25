@@ -12,7 +12,7 @@
                 <span class="w3-xlarge">Take photos and learn about the surrounding landmarks.</span>
             </p>
             <app-camera (findPicture)="findPicture($event)"></app-camera>
-            <app-figure-view [viewModel]="figureViewModel | async"></app-figure-view>
+            <app-figure-view [viewModel]="figureViewModel | async" [showPopup]="showPopup|async" (togglePopupVisibility)="togglePopup()"></app-figure-view>
         </div>
     </div>
 </div>
@@ -27,9 +27,6 @@
             <i class="fa fa-android w3-large"></i>
             <i class="fa fa-apple w3-large"></i>
             <i class="fa fa-windows w3-large"></i>
-            <p>
-                <input class="w3-input w3-border" type="text" placeholder="Enter e-mail">
-            </p>
         </div>
     </div>
 </div>

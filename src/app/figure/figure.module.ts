@@ -6,8 +6,9 @@ import { FigureComponent } from './figure.component';
 import { CameraComponent } from './camera/camera.component';
 import { FigureInfoService } from '../services/figure-info.service';
 import { GoogleVisionService } from '../services/google-vision.service';
-import { FigureViewModelSelector } from './tokens';
+import { FigureViewModelSelector, ShowPopupSelector } from './selectors';
 import { FigureViewComponent } from './figure-view/figure-view.component';
+import { AppState } from '../app.state';
 
 @NgModule({
   imports: [
@@ -27,7 +28,11 @@ import { FigureViewComponent } from './figure-view/figure-view.component';
     GoogleVisionService,
     FigureInfoService,
     {
-      provide: FigureViewModelSelector, useFactory: (store) => store.select((state) => state.figure.figureViewModel),
+      provide: FigureViewModelSelector, useFactory: (store) => store.select((state: AppState) => state.figure.figureViewModel),
+      deps: [Store]
+    },
+    {
+      provide: ShowPopupSelector, useFactory: (store) => store.select((state: AppState) => state.figure.isPopupVisible),
       deps: [Store]
     }
   ],
