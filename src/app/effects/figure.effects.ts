@@ -10,8 +10,7 @@ import { Observable, from } from 'rxjs';
 export class FigureEffects {
 
     @Effect()
-    public login$ = this.actions$
-        // Listen for the 'LOGIN' action
+    public onFindFigure$ = this.actions$
         .ofType(FiguresActions.FIND_FIGURE)
         .pipe(
             switchMap((action: FindFigure) => this.googleService.findFigure(action.imgBase64)),

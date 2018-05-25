@@ -9,7 +9,17 @@ import { FigureViewModel } from './figure-view.viewmodel';
 })
 export class FigureViewComponent {
 
+  private selectedImgIndex = 0;
+  private imagesLength = -1;
+  private _viewModel: FigureViewModel;
+
   @Input()
-  public viewModel: FigureViewModel;
+  public set viewModel(viewModel) {
+    this._viewModel = viewModel;
+  }
+
+  public get viewModel() {
+    return this._viewModel;
+  }
 
 }

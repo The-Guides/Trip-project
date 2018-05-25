@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { Store } from '@ngrx/store';
 
 import { FigureComponent } from './figure.component';
-import { FigureLandingPageComponent } from './figure-landing-page/figure-landing-page.component';
 import { CameraComponent } from './camera/camera.component';
 import { FigureInfoService } from '../services/figure-info.service';
 import { GoogleVisionService } from '../services/google-vision.service';
@@ -16,13 +15,11 @@ import { FigureViewComponent } from './figure-view/figure-view.component';
   ],
   declarations: [
     FigureComponent,
-    FigureLandingPageComponent,
     CameraComponent,
     FigureViewComponent,
   ],
   exports: [
     FigureComponent,
-    FigureLandingPageComponent,
     CameraComponent,
     FigureViewComponent,
   ],
@@ -30,7 +27,7 @@ import { FigureViewComponent } from './figure-view/figure-view.component';
     GoogleVisionService,
     FigureInfoService,
     {
-      provide: FigureViewModelSelector, useFactory: (store) => store.select((state) => state.figure.figureViewModel),
+      provide: FigureViewModelSelector, useFactory: (store) => store.select('figure', 'figureViewModel'),
       deps: [Store]
     }
   ],
