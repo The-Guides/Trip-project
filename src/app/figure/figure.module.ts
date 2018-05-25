@@ -27,7 +27,7 @@ import { FigureViewComponent } from './figure-view/figure-view.component';
     GoogleVisionService,
     FigureInfoService,
     {
-      provide: FigureViewModelSelector, useFactory: (store) => store.select('figure', 'figureViewModel'),
+      provide: FigureViewModelSelector, useFactory: (store) => store.select((state) => state.figure.figureViewModel),
       deps: [Store]
     }
   ],
