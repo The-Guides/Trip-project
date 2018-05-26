@@ -1,14 +1,11 @@
-<div class="popup-background" #background>
-  <div>
-    <span (click)="hidePopup()" class="close">X</span>
-    <h1 class="figure-name" *ngIf="showMessage">
-      {{viewModel.name}}
-    </h1>
-    <h2 class="figure-description" [ngClass]="showMessage ? 'figure-description': 'not-found-message'">
-      {{viewModel.description}}
-    </h2>
-  </div>
-  <div class="gallery" *ngIf="showMessage">
-    <img (click)="nextImg()" class="image" class="img" [src]="viewModel?.images[selectedImgIndex]">
-  </div>
+<div>
+  <h1 class="figure-name" *ngIf="showMessage">
+    {{viewModel.name}}
+  </h1>
+  <h2 class="figure-description" [ngClass]="showMessage ? 'figure-description': 'not-found-message'">
+    {{viewModel.description}}
+  </h2>
+</div>
+<div class="gallery" *ngIf="showMessage">
+  <img (click)="nextImg()" class="image" class="img" [src]="viewModel?.images[selectedImgIndex]">
 </div>

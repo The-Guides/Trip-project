@@ -1,4 +1,7 @@
-<!-- The App Section -->
+<app-popup-background [showCloseButton]="false" [showPopup]="loadingScreen | async">
+    <app-loading></app-loading>
+</app-popup-background>
+
 <div class="w3-padding-64 w3-white">
     <div class="w3-row-padding">
         <div class="w3-col l8 m6 camera-container">
@@ -12,7 +15,9 @@
                 <span class="w3-xlarge">Take photos and learn about the surrounding landmarks.</span>
             </p>
             <app-camera (findPicture)="findPicture($event)"></app-camera>
-            <app-figure-view [viewModel]="figureViewModel | async" [showPopup]="showPopup|async" (togglePopupVisibility)="togglePopup()"></app-figure-view>
+            <app-popup-background [showPopup]="showPopup|async" (togglePopupVisibility)="togglePopup()" [showCloseButton]="true">
+                <app-figure-view [viewModel]="figureViewModel | async"></app-figure-view>
+            </app-popup-background>
         </div>
     </div>
 </div>
