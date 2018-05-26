@@ -21,14 +21,14 @@ export class FetchFigureData implements Action {
     readonly type = FiguresActions.FETCH_FIGURE_DATA;
 }
 
-export class LoadFigureData implements Action {
-    readonly type = FiguresActions.LOAD_FIGURE_DATA;
-    constructor(public figureData: FigureViewModel) { }
+export class LoadFigureViewModel implements Action {
+    public type = FiguresActions.LOAD_FIGURE_DATA;
+    constructor(public payload: Partial<Figure>) { }
 }
 
 export class TogglePopup implements Action {
-    readonly type = FiguresActions.TOGGLE_POPUP;
-    constructor(public payload: boolean) { }
+    public type = FiguresActions.TOGGLE_POPUP;
+    constructor(public payload: Partial<Figure>) { }
 }
 
 export class GoogleVisionOk implements Action {
@@ -40,4 +40,4 @@ export class GoogleVisionFailed implements Action {
     readonly type = FiguresActions.GOOGLE_VISION_FAILED;
 }
 
-export type FigureActions = TogglePopup | LoadFigureData;
+export type FigureActions = TogglePopup | LoadFigureViewModel;

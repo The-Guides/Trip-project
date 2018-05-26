@@ -9,8 +9,6 @@
     </h2>
   </div>
   <div class="gallery" *ngIf="showMessage">
-    <button (click)="prevImg()" class="flex">Left</button>
-    <img class="image" class="img" [src]="viewModel?.images[selectedImgIndex]">
-    <button (click)="nextImg()" class="flex">Right</button>
+    <img (click)="nextImg()" class="image" class="img" [src]="viewModel?.images[selectedImgIndex]">
   </div>
 </div>

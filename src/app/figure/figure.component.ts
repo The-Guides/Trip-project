@@ -31,7 +31,7 @@ export class FigureComponent {
   }
 
   public togglePopup() {
-    this.dispatcher.dispatch(new TogglePopup(false));
+    this.dispatcher.dispatch(new TogglePopup({ isPopupVisible: false }));
   }
 }
 

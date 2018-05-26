@@ -1,6 +1,6 @@
-import { Action } from '@ngrx/store';
+import { Action, ActionReducerMap } from '@ngrx/store';
 import { Figure } from './../models/figure.model';
-import { FiguresActions, LoadFigureData, TogglePopup, FigureActions } from '../actions/figure.actions';
+import { FiguresActions, LoadFigureViewModel, TogglePopup, FigureActions } from '../actions/figure.actions';
 import { getPropertyName, getNewStateWithChangeValue } from '../shared/functions';
 
 // Section 1
@@ -14,12 +14,12 @@ const initialState: Figure = {
 };
 
 // TODO fix this action type
-function loadFigureData(state: Figure, action: any) {
-    return getNewStateWithChangeValue(state, getPropertyName(() => state.figureViewModel), action.figureData);
+function loadFigureData(state: Figure, action: LoadFigureViewModel) {
+    return getNewStateWithChangeValue(state, getPropertyName(() => state.figureViewModel), action.payload.figureViewModel);
 }
 
 function togglePopup(state: Figure, action: TogglePopup) {
-    return getNewStateWithChangeValue(state, getPropertyName(() => state.isPopupVisible), action.payload);
+    return getNewStateWithChangeValue(state, getPropertyName(() => state.isPopupVisible), action.payload.isPopupVisible);
 }
 
 const actionsMap = {
@@ -30,3 +30,4 @@ const actionsMap = {
 export function figureReducers(state: Figure = initialState, action: FigureActions) {
     return actionsMap[action.type] ? actionsMap[action.type](state, action) : state;
 }
+

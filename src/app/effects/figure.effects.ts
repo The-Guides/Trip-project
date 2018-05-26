@@ -2,7 +2,13 @@ import { Injectable } from '@angular/core';
 import { Actions, Effect } from '@ngrx/effects';
 import { map, switchMap, tap } from 'rxjs/operators';
 import { GoogleVisionService, GoogleVisionResponse } from '../services/google-vision.service';
-import { FiguresActions, FindFigure, LoadFigureData, TogglePopup, GoogleVisionOk, GoogleVisionFailed } from '../actions/figure.actions';
+import {
+    FiguresActions,
+    FindFigure,
+    LoadFigureViewModel, TogglePopup,
+    GoogleVisionOk,
+    GoogleVisionFailed
+} from '../actions/figure.actions';
 import { FigureInfoService } from '../services/figure-info.service';
 import { Observable, from } from 'rxjs';
 import { FigureViewModel } from '../figure/figure-view/figure-view.viewmodel';
@@ -18,7 +24,7 @@ export class FigureEffects {
             map((responses: GoogleVisionResponse) => {
                 let result;
                 // we want to check if google vision founded the figure
-                if (Object.keys(responses.responses[0]).length > 0) {
+                if (responses.responses.length > 0 && Object.keys(responses.responses[0]).length > 0) {
                     let rawId = responses.responses[0].landmarkAnnotations[0].mid;
                     rawId = rawId.substring(rawId.lastIndexOf('/'));
                     // if so we want to return the GoogleVisionOk
@@ -35,14 +41,16 @@ export class FigureEffects {
         .ofType(FiguresActions.GOOGLE_VISION_OK)
         .pipe(
             switchMap((action: GoogleVisionOk) => this.figureService.getFigureDetails(action.figureId)),
-            switchMap((response: FigureViewModel) => from([new LoadFigureData(response), new TogglePopup(true)])));
+            switchMap((response: FigureViewModel) =>
+                from([new LoadFigureViewModel({ figureViewModel: response }), new TogglePopup({ isPopupVisible: true })])));
 
     @Effect()
     public onFindFigureFailed = this.actions$
         .ofType(FiguresActions.GOOGLE_VISION_FAILED)
-        .pipe(switchMap(() => {
-            return from([new LoadFigureData({ description: 'Not found' } as any), new TogglePopup(true)]);
-        }));
+        .pipe(switchMap(() =>
+            from([new LoadFigureViewModel({ figureViewModel: { description: 'Not found' } } as any),
+            new TogglePopup({ isPopupVisible: true })])
+        ));
 
     constructor(
         private actions$: Actions,
