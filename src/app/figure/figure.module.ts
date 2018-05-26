@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Store } from '@ngrx/store';
+import { AgmCoreModule } from '@agm/core';
 
 import { FigureComponent } from './figure.component';
 import { CameraComponent } from './camera/camera.component';
@@ -12,7 +13,8 @@ import { AppState } from '../app.state';
 import { PopupBackgroundComponent } from '../shared/popup-background/popup-background.component';
 import { LoadingComponent } from '../shared/loading/loading.component';
 import { GoogleMapsComponent } from '../shared/google-map/google-maps.components';
-import { AgmCoreModule } from '@agm/core';
+import { TeamComponent } from './team/team.component';
+import { FeatureComponent } from './feature/feature.component';
 
 @NgModule({
   imports: [
@@ -27,7 +29,9 @@ import { AgmCoreModule } from '@agm/core';
     FigureViewComponent,
     PopupBackgroundComponent,
     LoadingComponent,
-    GoogleMapsComponent
+    GoogleMapsComponent,
+    TeamComponent,
+    FeatureComponent
   ],
   exports: [
     FigureComponent,
@@ -35,7 +39,9 @@ import { AgmCoreModule } from '@agm/core';
     FigureViewComponent,
     PopupBackgroundComponent,
     LoadingComponent,
-    GoogleMapsComponent
+    GoogleMapsComponent,
+    TeamComponent,
+    FeatureComponent
   ],
   providers: [
     GoogleVisionService,
