@@ -12,7 +12,9 @@
                 <span class="w3-xlarge">Take photos and learn about the surrounding landmarks.</span>
             </p>
             <app-camera (findPicture)="findPicture($event)"></app-camera>
-            <app-figure-view [viewModel]="figureViewModel | async" [showPopup]="showPopup|async" (togglePopupVisibility)="togglePopup()"></app-figure-view>
+            <app-popup-background [showPopup]="showPopup|async" (togglePopupVisibility)="togglePopup()">
+                <app-figure-view [viewModel]="figureViewModel | async"></app-figure-view>
+            </app-popup-background>
         </div>
     </div>
 </div>

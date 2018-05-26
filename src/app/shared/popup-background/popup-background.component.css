@@ -1,0 +1,23 @@
+.popup-background {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.5);
+    z-index: 2;
+    font-family: "Poppins";
+}
+
+.close {
+    color: white;
+    cursor: pointer;
+    float: right;
+    top: 20px;
+    right: 20px;
+    font-size: 3em;
+    font-weight: 600;
+    margin-right: 20px;
+}

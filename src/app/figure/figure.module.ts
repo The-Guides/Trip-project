@@ -9,6 +9,8 @@ import { GoogleVisionService } from '../services/google-vision.service';
 import { FigureViewModelSelector, ShowPopupSelector } from './selectors';
 import { FigureViewComponent } from './figure-view/figure-view.component';
 import { AppState } from '../app.state';
+import { PopupBackgroundComponent } from '../shared/popup-background/popup-background.component';
+import { MyPlacesComponent } from './my-places/my-places.component';
 
 @NgModule({
   imports: [
@@ -18,11 +20,15 @@ import { AppState } from '../app.state';
     FigureComponent,
     CameraComponent,
     FigureViewComponent,
+    PopupBackgroundComponent,
+    MyPlacesComponent
   ],
   exports: [
     FigureComponent,
     CameraComponent,
     FigureViewComponent,
+    PopupBackgroundComponent,
+    MyPlacesComponent
   ],
   providers: [
     GoogleVisionService,

@@ -15,28 +15,23 @@ export class FigureViewComponent {
   private imagesLength = -1;
   private _viewModel: FigureViewModel;
 
-  @ViewChild('background')
-  private background: any;
-
   @Output()
   public togglePopupVisibility = new EventEmitter();
 
   @Input()
   public set viewModel(viewModel) {
+
     this.showMessage = viewModel != null
       && viewModel.images != null
       && viewModel.images.length > 0;
+
     // If there is no images we consider that there is no
     // that there is no figure and we show message
     if (this.showMessage) {
       this.imagesLength = viewModel.images.length;
     }
-    this._viewModel = viewModel;
-  }
 
-  @Input()
-  public set showPopup(showPopup: boolean) {
-    this.background.nativeElement.style.display = showPopup ? '' : 'none';
+    this._viewModel = viewModel;
   }
 
   public get viewModel() {
@@ -49,9 +44,5 @@ export class FigureViewComponent {
     } else {
       this.selectedImgIndex++;
     }
-  }
-
-  public hidePopup() {
-    this.togglePopupVisibility.emit();
   }
 }
