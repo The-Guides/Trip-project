@@ -1,9 +1,9 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-import { StoreModule, Store } from '@ngrx/store';
-import { EffectsModule } from '@ngrx/effects';
-import { HttpClientModule } from '@angular/common/http';
-import { AppComponent } from './app.component';
+import { BrowserModule } from "@angular/platform-browser";
+import { NgModule } from "@angular/core";
+import { StoreModule, Store } from "@ngrx/store";
+import { EffectsModule } from "@ngrx/effects";
+import { HttpClientModule } from "@angular/common/http";
+import { AppComponent } from "./app.component";
 
 import { figureReducers } from './reducers/figure.reducer';
 import { FigureModule } from './figure/figure.module';
@@ -14,11 +14,10 @@ import { AngularFireModule } from 'angularfire2';
 import { environment } from '../environments/environment.prod';
 import { Dispatcher } from './dispatcher';
 import { LoadingComponent } from './shared/loading/loading.component';
+import { RouterModule, Routes } from '@angular/router';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-  ],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     FigureModule,
@@ -29,11 +28,14 @@ import { LoadingComponent } from './shared/loading/loading.component';
     EffectsModule.forRoot([FigureEffects]),
     AngularFireModule.initializeApp(environment.firebase)
   ],
-  providers: [AngularFireDatabase,
+  providers: [
+    AngularFireDatabase,
     {
-      provide: Dispatcher, useFactory: (store) => store,
+      provide: Dispatcher,
+      useFactory: store => store,
       deps: [Store]
-    }],
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
