@@ -7,7 +7,7 @@ import { FigureComponent } from './figure.component';
 import { CameraComponent } from './camera/camera.component';
 import { FigureInfoService } from '../services/figure-info.service';
 import { GoogleVisionService } from '../services/google-vision.service';
-import { FigureViewModelSelector, ShowPopupSelector, LoadingSelector } from './selectors';
+import { FigureViewModelSelector, ShowPopupSelector, LoadingSelector, MarkersSelector } from './selectors';
 import { FigureViewComponent } from './figure-view/figure-view.component';
 import { AppState } from '../app.state';
 import { PopupBackgroundComponent } from '../shared/popup-background/popup-background.component';
@@ -56,6 +56,10 @@ import { FeatureComponent } from './feature/feature.component';
     },
     {
       provide: LoadingSelector, useFactory: (store) => store.select((state: AppState) => state.figure.loading),
+      deps: [Store]
+    },
+    {
+      provide: MarkersSelector, useFactory: (store) => store.select((state: AppState) => state.figure.markers),
       deps: [Store]
     }
   ],
