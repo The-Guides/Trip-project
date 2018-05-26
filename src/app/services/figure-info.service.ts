@@ -10,4 +10,8 @@ export class FigureInfoService {
     public getFigureDetails(figureId: string) {
         return this.db.object('figures/' + figureId).valueChanges();
     }
+
+    public getAllFigures() {
+       return this.db.object('figures/').valueChanges();
+    }
 }

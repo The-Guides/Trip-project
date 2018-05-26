@@ -9,20 +9,27 @@ import { GoogleVisionService } from '../services/google-vision.service';
 import { FigureViewModelSelector, ShowPopupSelector } from './selectors';
 import { FigureViewComponent } from './figure-view/figure-view.component';
 import { AppState } from '../app.state';
+import { GoogleMapsComponent } from '../shared/google-map/google-maps.components';
+import { AgmCoreModule } from '@agm/core';
 
 @NgModule({
   imports: [
-    CommonModule
+    CommonModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyBOG9LZXqqVGOi7U6xFiN4J0_8ZhrLAfWI'
+    })
   ],
   declarations: [
     FigureComponent,
     CameraComponent,
     FigureViewComponent,
+    GoogleMapsComponent
   ],
   exports: [
     FigureComponent,
     CameraComponent,
     FigureViewComponent,
+    GoogleMapsComponent
   ],
   providers: [
     GoogleVisionService,
