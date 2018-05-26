@@ -44,18 +44,10 @@ export class FigureViewComponent {
   }
 
   public nextImg() {
-    if (this.selectedImgIndex > this.imagesLength) {
+    if (this.selectedImgIndex >= this.imagesLength - 1) {
       this.selectedImgIndex = 0;
     } else {
       this.selectedImgIndex++;
-    }
-  }
-
-  public prevImg() {
-    if (this.selectedImgIndex <= 0) {
-      this.selectedImgIndex = this.imagesLength;
-    } else {
-      this.selectedImgIndex--;
     }
   }
 
