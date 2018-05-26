@@ -1,5 +1,6 @@
-import { Component } from "@angular/core";
+import { Component, Input } from "@angular/core";
 import { MouseEvent } from "@agm/core";
+import { Marker } from "./marker";
 
 @Component({
   selector: "app-google-map",
@@ -8,27 +9,14 @@ import { MouseEvent } from "@agm/core";
 })
 export class GoogleMapsComponent {
   // google maps zoom level
-  zoom = 13;
+  public zoom = 13;
 
   // initial center position for the map
-  lat = 42.6977;
-  lng = 23.3219;
+  public lat = 42.6977;
+  public lng = 23.3219;
 
-  markers: Marker[] = [
-    {
-      lat: 42.694982,
-      lng: 23.33531,
-      draggable: false,
-      name: "Националната библиотека „Св. св. Кирил и Методий"
-    },
-    {
-      lat: 42.695841,
-      lng: 23.33252,
-      draggable: false,
-      name: "Народно събрание"
-    },
-
-  ];
+  @Input()
+  public markers: Marker[];
 
   clickedMarker(label: string, index: number) {
     console.log(`clicked the marker: ${label || index}`);
@@ -40,10 +28,3 @@ export class GoogleMapsComponent {
 }
 
 // just an interface for type safety.
-interface Marker {
-  lat: number;
-  lng: number;
-  label?: string;
-  draggable: boolean;
-  name: string;
-}

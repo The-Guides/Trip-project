@@ -11,6 +11,8 @@ export const FiguresActions = {
     GOOGLE_VISION_OK: 'This will be returned if google vision did found the figure',
     GOOGLE_VISION_FAILED: 'This will be returned if google vision did not found the figure',
     TOGGLE_LOADING: 'This will toggle loading screen',
+    FETCH_ALL_FIGURES: 'This will fetch all the figures from our db',
+    LOAD_ALL_FIGURES: 'This will load all figures in the state of the app'
 };
 
 export class FindFigure implements Action {
@@ -20,6 +22,15 @@ export class FindFigure implements Action {
 
 export class FetchFigureData implements Action {
     readonly type = FiguresActions.FETCH_FIGURE_DATA;
+}
+
+export class FetchAllFigures implements Action {
+  readonly type = FiguresActions.FETCH_ALL_FIGURES;
+}
+
+export class LoadAllFigures implements Action {
+  public type = FiguresActions.LOAD_ALL_FIGURES;
+  constructor(public payload: Partial<Figure>) { }
 }
 
 export class LoadFigureViewModel implements Action {

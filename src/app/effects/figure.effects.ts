@@ -8,7 +8,8 @@ import {
     LoadFigureViewModel, TogglePopup,
     GoogleVisionOk,
     GoogleVisionFailed,
-    ToggleLoading
+    ToggleLoading,
+    LoadAllFigures
 } from '../actions/figure.actions';
 import { FigureInfoService } from '../services/figure-info.service';
 import { Observable, from } from 'rxjs';
@@ -56,6 +57,14 @@ export class FigureEffects {
             from([new LoadFigureViewModel({ figureViewModel: { description: 'Not found' } } as any),
             new TogglePopup({ isPopupVisible: true })])
         ));
+
+    @Effect()
+    public onFetchAllFigures = this.actions$
+    .ofType(FiguresActions.FETCH_ALL_FIGURES)
+    .pipe(
+      switchMap(() => this.figureService.getAllFigures()),
+      map((response) => new LoadAllFigures({markers: response}))
+    );
 
     constructor(
         private actions$: Actions,
