@@ -14,6 +14,7 @@ import { AngularFireModule } from 'angularfire2';
 import { environment } from '../environments/environment.prod';
 import { Dispatcher } from './dispatcher';
 import { LoadingComponent } from './shared/loading/loading.component';
+import { RouterModule, Routes } from '@angular/router';
 
 @NgModule({
   declarations: [AppComponent],
@@ -37,4 +38,4 @@ import { LoadingComponent } from './shared/loading/loading.component';
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule { }
