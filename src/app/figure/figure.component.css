@@ -2,6 +2,16 @@ button {
   width: 100%;
 }
 
-.camera-container{
+.camera-container {
   width: 100%
+}
+
+.info-about-app {
+  width: 48%;
+}
+
+app-camera {
+  float: right;
+  width: 48%;
+  margin-top: -120px;
 }
