@@ -1,0 +1,77 @@
+.image {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+}
+
+.popup-background {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.5);
+    z-index: 2;
+    font-family: "Poppins";
+}
+
+.not-found-message{
+    text-align: center;
+    font-size: 3em;
+    vertical-align:middle;
+}
+
+.close {
+    color: white;
+    cursor: pointer;
+    float: right;
+    top: 20px;
+    right: 20px;
+    font-size: 3em;
+    font-weight: 600;
+    margin-right: 20px;
+}
+
+.gallery {
+    padding: 0;
+    margin: 0;    
+    display: flex;    
+    justify-content: space-around;
+}
+
+.flex {
+    padding: 5px;
+    width: 200px;
+    height: 150px;
+    margin-top: 10px;    
+    line-height: 150px;
+    color: white;
+    font-weight: bold;
+    font-size: 3em;
+    text-align: center;
+    flex: 1;
+}
+
+.img {
+    width: 50%;
+    height: 50%;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.figure-name {
+    text-align: center;
+    color: white;
+    font-size: 3em;
+}
+
+.figure-description {
+    text-align: center;
+    color: white;
+    font-size: 2em;
+    margin-left: 10px;
+    margin-right: 10px;
+}

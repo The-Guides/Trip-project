@@ -1,13 +1,16 @@
-<h1>
-  {{viewModel.name}}
-</h1>
-<h2>
-  {{viewModel.description}}
-</h2>
-
-<ul>
-
-  <li *ngFor="let imgUrl of viewModel.images">
-    <img *ngIf="imgUrl!=null" [src]="imgUrl" alt="">
-  </li>
-</ul>
+<div class="popup-background" #background>
+  <div>
+    <span (click)="hidePopup()" class="close">X</span>
+    <h1 class="figure-name" *ngIf="showMessage">
+      {{viewModel.name}}
+    </h1>
+    <h2 class="figure-description" [ngClass]="showMessage ? 'figure-description': 'not-found-message'">
+      {{viewModel.description}}
+    </h2>
+  </div>
+  <div class="gallery" *ngIf="showMessage">
+    <button (click)="prevImg()" class="flex">Left</button>
+    <img class="image" class="img" [src]="viewModel?.images[selectedImgIndex]">
+    <button (click)="nextImg()" class="flex">Right</button>
+  </div>
+</div>

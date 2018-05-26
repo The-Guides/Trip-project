@@ -2,25 +2,47 @@ import { Injectable } from '@angular/core';
 import { Actions, Effect } from '@ngrx/effects';
 import { map, switchMap, tap } from 'rxjs/operators';
 import { GoogleVisionService, GoogleVisionResponse } from '../services/google-vision.service';
-import { FiguresActions, FindFigure, LoadFigureData } from '../actions/figure.actions';
+import { FiguresActions, FindFigure, LoadFigureData, TogglePopup, GoogleVisionOk, GoogleVisionFailed } from '../actions/figure.actions';
 import { FigureInfoService } from '../services/figure-info.service';
 import { Observable, from } from 'rxjs';
+import { FigureViewModel } from '../figure/figure-view/figure-view.viewmodel';
 
 @Injectable()
 export class FigureEffects {
 
     @Effect()
-    public login$ = this.actions$
-        // Listen for the 'LOGIN' action
+    public onFindFigure$ = this.actions$
         .ofType(FiguresActions.FIND_FIGURE)
         .pipe(
             switchMap((action: FindFigure) => this.googleService.findFigure(action.imgBase64)),
             map((responses: GoogleVisionResponse) => {
-                const rawId = responses.responses[0].landmarkAnnotations[0].mid;
-                return rawId.substring(rawId.lastIndexOf('/'));
-            }),
-            switchMap(figureId => this.figureService.getFigureDetails(figureId)),
-            switchMap((response) => from([new LoadFigureData(response)])));
+                let result;
+                // we want to check if google vision founded the figure
+                if (Object.keys(responses.responses[0]).length > 0) {
+                    let rawId = responses.responses[0].landmarkAnnotations[0].mid;
+                    rawId = rawId.substring(rawId.lastIndexOf('/'));
+                    // if so we want to return the GoogleVisionOk
+                    result = new GoogleVisionOk(rawId);
+                } else {
+                    // else we want to return GoogleVisionFailed
+                    result = new GoogleVisionFailed();
+                }
+                return result;
+            }));
+
+    @Effect()
+    public onFetchFigureData = this.actions$
+        .ofType(FiguresActions.GOOGLE_VISION_OK)
+        .pipe(
+            switchMap((action: GoogleVisionOk) => this.figureService.getFigureDetails(action.figureId)),
+            switchMap((response: FigureViewModel) => from([new LoadFigureData(response), new TogglePopup(true)])));
+
+    @Effect()
+    public onFindFigureFailed = this.actions$
+        .ofType(FiguresActions.GOOGLE_VISION_FAILED)
+        .pipe(switchMap(() => {
+            return from([new LoadFigureData({ description: 'Not found' } as any), new TogglePopup(true)]);
+        }));
 
     constructor(
         private actions$: Actions,

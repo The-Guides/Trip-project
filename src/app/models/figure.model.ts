@@ -1,5 +1,6 @@
+import { FigureViewModel } from '../figure/figure-view/figure-view.viewmodel';
+
 export interface Figure {
-    name: string;
-    description: string;
-    images: [string];
+    figureViewModel: FigureViewModel;
+    isPopupVisible: boolean;
 }
