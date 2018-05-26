@@ -12,6 +12,8 @@ export class PopupBackgroundComponent {
 
   @Input()
   public set showPopup(showPopup: boolean) {
+    document.body.style.overflow = showPopup ? 'hidden' : '';
+
     this.background.nativeElement.style.display = showPopup ? '' : 'none';
   }
 
