@@ -7,13 +7,13 @@ import { AppComponent } from './app.component';
 
 import { figureReducers } from './reducers/figure.reducer';
 import { FigureModule } from './figure/figure.module';
-import { FigureComponent } from './figure/figure.component';
 import { FigureEffects } from './effects/figure.effects';
 import { GoogleVisionService } from './services/google-vision.service';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { AngularFireModule } from 'angularfire2';
 import { environment } from '../environments/environment.prod';
 import { Dispatcher } from './dispatcher';
+import { LoadingComponent } from './shared/loading/loading.component';
 
 @NgModule({
   declarations: [

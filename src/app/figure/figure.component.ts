@@ -1,6 +1,6 @@
 import { Component, OnInit, Inject, forwardRef } from '@angular/core';
-import { FigureViewModelSelector, ShowPopupSelector } from './selectors';
-import { FindFigure, TogglePopup } from '../actions/figure.actions';
+import { FigureViewModelSelector, ShowPopupSelector, LoadingSelector } from './selectors';
+import { FindFigure, TogglePopup, ToggleLoading } from '../actions/figure.actions';
 import { AppState } from '../app.state';
 import { Store, createFeatureSelector, createSelector, select } from '@ngrx/store';
 import { Observable } from 'rxjs';
@@ -21,13 +21,16 @@ export class FigureComponent {
     @Inject(forwardRef(() => Dispatcher))
     private dispatcher: Dispatcher,
     @Inject(forwardRef(() => ShowPopupSelector))
-    public showPopup: Observable<boolean>
+    public showPopup: Observable<boolean>,
+    @Inject(forwardRef(() => LoadingSelector))
+    public loadingScreen: Observable<boolean>
   ) { }
 
   public findPicture(base64: string) {
     const comaIndex = base64.indexOf(',');
     base64 = base64.substring(comaIndex + 1);
     this.dispatcher.dispatch(new FindFigure(base64));
+    this.dispatcher.dispatch(new ToggleLoading({ loading: true }));
   }
 
   public togglePopup() {

@@ -10,6 +10,7 @@ export const FiguresActions = {
     TOGGLE_POPUP: 'This will toggle the popup',
     GOOGLE_VISION_OK: 'This will be returned if google vision did found the figure',
     GOOGLE_VISION_FAILED: 'This will be returned if google vision did not found the figure',
+    TOGGLE_LOADING: 'This will toggle loading screen',
 };
 
 export class FindFigure implements Action {
@@ -31,6 +32,10 @@ export class TogglePopup implements Action {
     constructor(public payload: Partial<Figure>) { }
 }
 
+export class ToggleLoading implements Action {
+    readonly type = FiguresActions.TOGGLE_LOADING;
+    constructor(public payload: Partial<Figure>) { }
+}
 export class GoogleVisionOk implements Action {
     readonly type = FiguresActions.GOOGLE_VISION_OK;
     constructor(public figureId: string) { }
@@ -40,4 +45,4 @@ export class GoogleVisionFailed implements Action {
     readonly type = FiguresActions.GOOGLE_VISION_FAILED;
 }
 
-export type FigureActions = TogglePopup | LoadFigureViewModel;
+export type FigureActions = TogglePopup | LoadFigureViewModel | ToggleLoading;

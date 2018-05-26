@@ -1,4 +1,4 @@
 <div class="popup-background" #background>
-  <span (click)="hidePopup()" class="close">X</span>
+  <span *ngIf="showCloseButton" (click)="hidePopup()" class="close">X</span>
   <ng-content></ng-content>
 </div>
