@@ -15,6 +15,9 @@ export class PopupBackgroundComponent {
     this.background.nativeElement.style.display = showPopup ? '' : 'none';
   }
 
+  @Input()
+  public showCloseButton: boolean;
+
   @Output()
   public togglePopupVisibility = new EventEmitter();
 

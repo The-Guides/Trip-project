@@ -7,7 +7,8 @@ import {
     FindFigure,
     LoadFigureViewModel, TogglePopup,
     GoogleVisionOk,
-    GoogleVisionFailed
+    GoogleVisionFailed,
+    ToggleLoading
 } from '../actions/figure.actions';
 import { FigureInfoService } from '../services/figure-info.service';
 import { Observable, from } from 'rxjs';
@@ -31,7 +32,7 @@ export class FigureEffects {
                     result = new GoogleVisionOk(rawId);
                 } else {
                     // else we want to return GoogleVisionFailed
-                    result = new GoogleVisionFailed();
+                    result = [new ToggleLoading({ loading: false }), new GoogleVisionFailed()];
                 }
                 return result;
             }));
@@ -42,7 +43,11 @@ export class FigureEffects {
         .pipe(
             switchMap((action: GoogleVisionOk) => this.figureService.getFigureDetails(action.figureId)),
             switchMap((response: FigureViewModel) =>
-                from([new LoadFigureViewModel({ figureViewModel: response }), new TogglePopup({ isPopupVisible: true })])));
+                // when we have the response we want to hide the loading screen
+                from([
+                    new LoadFigureViewModel({ figureViewModel: response }),
+                    new TogglePopup({ isPopupVisible: true }),
+                    new ToggleLoading({ loading: false })])));
 
     @Effect()
     public onFindFigureFailed = this.actions$
