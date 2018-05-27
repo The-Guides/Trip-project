@@ -4,7 +4,7 @@ import { Figure } from "../../models/figure.model";
 export interface FigureViewModel {
   name: string;
   description: string;
-  images: [string];
+  images: string[];
   locations: {
     latitude: number;
     longitude: number;

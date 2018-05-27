@@ -2,10 +2,10 @@
   <h1 class="figure-name" *ngIf="showMessage">
     {{viewModel.name}}
   </h1>
+  <div class="gallery" *ngIf="showMessage">
+    <img (click)="nextImg()" class="image" class="img" [src]="viewModel?.images[selectedImgIndex]">
+  </div>
   <h2 class="figure-description" [ngClass]="showMessage ? 'figure-description': 'not-found-message'">
     {{viewModel.description}}
   </h2>
-</div>
-<div class="gallery" *ngIf="showMessage">
-  <img (click)="nextImg()" class="image" class="img" [src]="viewModel?.images[selectedImgIndex]">
 </div>
