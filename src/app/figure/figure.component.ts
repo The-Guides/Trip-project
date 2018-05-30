@@ -42,7 +42,7 @@ export class FigureComponent implements OnInit {
     public loadingScreen: Observable<boolean>,
     @Inject(forwardRef(() => MarkersSelector))
     public markers: Observable<Marker[]>
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.dispatcher.dispatch(new FetchAllFigures());
@@ -52,10 +52,10 @@ export class FigureComponent implements OnInit {
     const comaIndex = base64.indexOf(",");
     base64 = base64.substring(comaIndex + 1);
     this.dispatcher.dispatch(new FindFigure(base64));
-    this.dispatcher.dispatch(new ToggleLoading({ loading: true }));
+    this.dispatcher.dispatch(new ToggleLoading(true));
   }
 
   public togglePopup() {
-    this.dispatcher.dispatch(new TogglePopup({ isPopupVisible: false }));
+    this.dispatcher.dispatch(new TogglePopup(false));
   }
 }

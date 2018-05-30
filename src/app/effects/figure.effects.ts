@@ -33,7 +33,7 @@ export class FigureEffects {
                     result = of(new GoogleVisionOk(rawId));
                 } else {
                     // else we want to return GoogleVisionFailed
-                    result = [new ToggleLoading({ loading: false }), new GoogleVisionFailed()];
+                    result = [new ToggleLoading(false), new GoogleVisionFailed()];
                 }
                 return result;
             }));
@@ -46,17 +46,17 @@ export class FigureEffects {
             switchMap((response: FigureViewModel) =>
                 // when we have the response we want to hide the loading screen
                 from([
-                    new LoadFigureViewModel({ figureViewModel: response }),
-                    new TogglePopup({ isPopupVisible: true }),
-                    new ToggleLoading({ loading: false })])));
+                    new LoadFigureViewModel(response),
+                    new TogglePopup(true),
+                    new ToggleLoading(false)])));
 
     @Effect()
     public onFindFigureFailed = this.actions$
         .ofType(FiguresActions.GOOGLE_VISION_FAILED)
         .pipe(
             switchMap(() => from([
-                new LoadFigureViewModel({ figureViewModel: { description: 'Picture was not found in our archives' } as any }),
-                new TogglePopup({ isPopupVisible: true })])
+                new LoadFigureViewModel({ description: 'Picture was not found in our archives' } as any),
+                new TogglePopup(true)])
             ));
 
     @Effect()

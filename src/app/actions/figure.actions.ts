@@ -25,27 +25,27 @@ export class FetchFigureData implements Action {
 }
 
 export class FetchAllFigures implements Action {
-  readonly type = FiguresActions.FETCH_ALL_FIGURES;
+    readonly type = FiguresActions.FETCH_ALL_FIGURES;
 }
 
 export class LoadAllFigures implements Action {
-  public type = FiguresActions.LOAD_ALL_FIGURES;
-  constructor(public payload: Partial<Figure>) { }
+    public type = FiguresActions.LOAD_ALL_FIGURES;
+    constructor(public payload: Partial<Figure>) { }
 }
 
 export class LoadFigureViewModel implements Action {
     public type = FiguresActions.LOAD_FIGURE_DATA;
-    constructor(public payload: Partial<Figure>) { }
+    constructor(public payload: FigureViewModel) { }
 }
 
 export class TogglePopup implements Action {
     public type = FiguresActions.TOGGLE_POPUP;
-    constructor(public payload: Partial<Figure>) { }
+    constructor(public payload: boolean) { }
 }
 
 export class ToggleLoading implements Action {
     readonly type = FiguresActions.TOGGLE_LOADING;
-    constructor(public payload: Partial<Figure>) { }
+    constructor(public payload: boolean) { }
 }
 export class GoogleVisionOk implements Action {
     readonly type = FiguresActions.GOOGLE_VISION_OK;
