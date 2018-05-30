@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Action } from '@ngrx/store';
 import { Figure } from './../models/figure.model';
 import { FigureViewModel } from '../figure/figure-view/figure-view.viewmodel';
+import { Marker } from '../shared/google-map/marker';
 
 export const FiguresActions = {
     FIND_FIGURE: 'This will make a search for the figure',
@@ -30,7 +31,7 @@ export class FetchAllFigures implements Action {
 
 export class LoadAllFigures implements Action {
     public type = FiguresActions.LOAD_ALL_FIGURES;
-    constructor(public payload: Partial<Figure>) { }
+    constructor(public payload: Marker[]) { }
 }
 
 export class LoadFigureViewModel implements Action {

@@ -64,7 +64,7 @@ export class FigureEffects {
         .ofType(FiguresActions.FETCH_ALL_FIGURES)
         .pipe(
             switchMap(() => this.figureService.getAllFigures()),
-            map((response) => new LoadAllFigures({ markers: response }))
+            map((response) => new LoadAllFigures(response))
         );
 
     constructor(

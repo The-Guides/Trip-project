@@ -33,7 +33,7 @@ function toggleLoadingScreen(state: Figure, action: ToggleLoading) {
 }
 
 function loadMarkers(state: Figure, action: LoadAllFigures) {
-    return getNewStateWithChangeValue(state, getPropertyName(() => state.markers), action.payload.markers);
+    return getNewStateWithChangeValue(state, getPropertyName(() => state.markers), action.payload);
 }
 const actionsMap: ActionsMaps<Figure> = {
     [FiguresActions.LOAD_FIGURE_DATA]: loadFigureData,
