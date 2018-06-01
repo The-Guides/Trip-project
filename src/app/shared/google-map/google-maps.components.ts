@@ -18,13 +18,8 @@ export class GoogleMapsComponent {
   @Input()
   public markers: Marker[];
 
-  clickedMarker(label: string, index: number) {
-    console.log(`clicked the marker: ${label || index}`);
-  }
-
-  markerDragEnd(m: Marker, $event: MouseEvent) {
-    console.log("dragEnd", m, $event);
-  }
+  @Input()
+  public foundedMarkers: Marker[];
 }
 
 // just an interface for type safety.

@@ -1,6 +1,14 @@
 import { Action, ActionReducerMap, ActionReducer } from '@ngrx/store';
 import { Figure } from './../models/figure.model';
-import { FiguresActions, LoadFigureViewModel, TogglePopup, FigureActions, ToggleLoading, LoadAllFigures, UpdateFoundedLocations } from '../actions/figure.actions';
+import {
+    FiguresActions,
+    LoadFigureViewModel,
+    TogglePopup,
+    FigureActions,
+    ToggleLoading,
+    LoadAllFigures,
+    UpdateFoundedLocations
+} from '../actions/figure.actions';
 import { getPropertyName, getNewStateWithChangeValue } from '../shared/functions';
 
 // Section 1

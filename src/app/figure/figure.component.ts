@@ -45,11 +45,7 @@ export class FigureComponent implements OnInit {
     public markers: Observable<Marker[]>,
     @Inject(forwardRef(() => FoundedMarkersSelector))
     public foundedMarkers: Observable<Marker[]>,
-  ) {
-    foundedMarkers.subscribe(a => {
-      console.log(a[0]);
-    });
-  }
+  ) { }
 
   ngOnInit(): void {
     this.dispatcher.dispatch(new FetchAllFigures());
