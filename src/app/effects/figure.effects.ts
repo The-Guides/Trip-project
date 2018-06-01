@@ -9,7 +9,8 @@ import {
     GoogleVisionOk,
     GoogleVisionFailed,
     ToggleLoading,
-    LoadAllFigures
+    LoadAllFigures,
+    UpdateFoundedLocations
 } from '../actions/figure.actions';
 import { FigureInfoService } from '../services/figure-info.service';
 import { Observable, from, of } from 'rxjs';
@@ -27,10 +28,18 @@ export class FigureEffects {
                 let result;
                 // we want to check if google vision founded the figure
                 if (responses.responses.length > 0 && Object.keys(responses.responses[0]).length > 0) {
-                    let rawId = responses.responses[0].landmarkAnnotations[0].mid;
+                    const googleResponse = responses.responses[0].landmarkAnnotations[0];
+                    let rawId = googleResponse.mid;
+                    let locationMarker;
                     rawId = rawId.substring(rawId.lastIndexOf('/'));
+
                     // if so we want to return the GoogleVisionOk
-                    result = of(new GoogleVisionOk(rawId));
+                    if (responses.responses[0].landmarkAnnotations[0].locations != null &&
+                        responses.responses[0].landmarkAnnotations[0].locations.length > 0) {
+                        locationMarker = responses.responses[0].landmarkAnnotations[0].locations[0].latLng;
+                    }
+
+                    result = from([new GoogleVisionOk(rawId), new UpdateFoundedLocations(locationMarker)]);
                 } else {
                     // else we want to return GoogleVisionFailed
                     result = [new ToggleLoading(false), new GoogleVisionFailed()];
@@ -42,7 +51,7 @@ export class FigureEffects {
     public onFetchFigureData = this.actions$
         .ofType(FiguresActions.GOOGLE_VISION_OK)
         .pipe(
-            switchMap((action: GoogleVisionOk) => this.figureService.getFigureDetails(action.figureId)),
+            switchMap((action: GoogleVisionOk) => this.figureService.getFigureDetails(action.payload)),
             switchMap((response: FigureViewModel) =>
                 // when we have the response we want to hide the loading screen
                 from([

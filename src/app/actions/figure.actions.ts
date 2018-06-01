@@ -13,7 +13,8 @@ export const FiguresActions = {
     GOOGLE_VISION_FAILED: 'This will be returned if google vision did not found the figure',
     TOGGLE_LOADING: 'This will toggle loading screen',
     FETCH_ALL_FIGURES: 'This will fetch all the figures from our db',
-    LOAD_ALL_FIGURES: 'This will load all figures in the state of the app'
+    LOAD_ALL_FIGURES: 'This will load all figures in the state of the app',
+    UPDATE_FOUNDED_LOCATION: 'This will update the newly found location',
 };
 
 export class FindFigure implements Action {
@@ -50,11 +51,16 @@ export class ToggleLoading implements Action {
 }
 export class GoogleVisionOk implements Action {
     readonly type = FiguresActions.GOOGLE_VISION_OK;
-    constructor(public figureId: string) { }
+    constructor(public payload: string) { }
 }
 
 export class GoogleVisionFailed implements Action {
     readonly type = FiguresActions.GOOGLE_VISION_FAILED;
 }
 
-export type FigureActions = TogglePopup | LoadFigureViewModel | ToggleLoading;
+export class UpdateFoundedLocations implements Action {
+    readonly type = FiguresActions.UPDATE_FOUNDED_LOCATION;
+    constructor(public payload: Marker) { }
+}
+
+export type FigureActions = TogglePopup | LoadFigureViewModel | ToggleLoading | UpdateFoundedLocations;

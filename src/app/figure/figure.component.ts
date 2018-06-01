@@ -1,8 +1,9 @@
 import { Component, OnInit, Inject, forwardRef } from "@angular/core";
 import {
   FigureViewModelSelector,
-  ShowPopupSelector,
-  LoadingSelector
+  TogglePopupSelector,
+  ToggleLoadingSelector,
+  FoundedMarkersSelector
 } from "./selectors";
 import {
   FindFigure,
@@ -36,13 +37,19 @@ export class FigureComponent implements OnInit {
     public figureViewModel: Observable<FigureViewModel>,
     @Inject(forwardRef(() => Dispatcher))
     private dispatcher: Dispatcher,
-    @Inject(forwardRef(() => ShowPopupSelector))
+    @Inject(forwardRef(() => TogglePopupSelector))
     public showPopup: Observable<boolean>,
-    @Inject(forwardRef(() => LoadingSelector))
+    @Inject(forwardRef(() => ToggleLoadingSelector))
     public loadingScreen: Observable<boolean>,
     @Inject(forwardRef(() => MarkersSelector))
-    public markers: Observable<Marker[]>
-  ) { }
+    public markers: Observable<Marker[]>,
+    @Inject(forwardRef(() => FoundedMarkersSelector))
+    public foundedMarkers: Observable<Marker[]>,
+  ) {
+    foundedMarkers.subscribe(a => {
+      console.log(a[0]);
+    });
+  }
 
   ngOnInit(): void {
     this.dispatcher.dispatch(new FetchAllFigures());

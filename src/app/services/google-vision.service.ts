@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Marker } from '../shared/google-map/marker';
 
 @Injectable()
 export class GoogleVisionService {
@@ -15,9 +16,10 @@ export class GoogleVisionService {
 export interface LandMarkAnnotations {
     description: string;
     mid: string;
+    locations: { latLng: Marker }[];
 }
 
-export interface GoogleVisionResponse { responses: [{ landmarkAnnotations: [LandMarkAnnotations] }]; }
+export interface GoogleVisionResponse { responses: [{ landmarkAnnotations: [LandMarkAnnotations]; }]; }
 
 
 function getRequestType(img) {

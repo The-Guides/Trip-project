@@ -6,4 +6,6 @@ export interface Figure {
     isPopupVisible: boolean;
     loading: boolean;
     markers: Marker[];
+    foundedMarkers: Marker[];
 }
+
