@@ -25,6 +25,7 @@ export class FigureViewComponent {
       && viewModel.images != null
       && viewModel.images.length > 0;
 
+    viewModel.images = viewModel.images.filter(img => img != null);
     // If there is no images we consider that there is no
     // that there is no figure and we show message
     if (this.showMessage) {

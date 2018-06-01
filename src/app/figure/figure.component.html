@@ -20,11 +20,11 @@
             <h1 class="w3-xxxlarge w3-text-green">
                 <b>Why use it?</b>
             </h1>
+            <app-camera (findPicture)="findPicture($event)"></app-camera>
             <p class="info-about-app">
                 <span class="w3-xlarge">Take photos and learn about the surrounding landmarks. cbsjbcs kjcbsjcbs djcbdskcb sdkjcbsdjc bsdkcbs djcbsk dcb sd jcbsdj sksbd ksbd
                 </span>
             </p>
-            <app-camera (findPicture)="findPicture($event)"></app-camera>
             <app-popup-background [showPopup]="showPopup|async" (togglePopupVisibility)="togglePopup()" [showCloseButton]="true">
                 <app-figure-view [viewModel]="figureViewModel | async"></app-figure-view>
             </app-popup-background>
