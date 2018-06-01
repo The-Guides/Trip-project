@@ -1,43 +1,45 @@
 <app-popup-background [showCloseButton]="false" [showPopup]="loadingScreen | async">
-    <app-loading></app-loading>
+  <app-loading></app-loading>
 </app-popup-background>
 
 <div class="w3-top">
-    <div class="w3-bar w3-light-grey">
-        <a href="#" class="w3-bar-item w3-button">Home</a>
-        <a href="#" class="w3-bar-item w3-button">Link 1</a>
-        <a href="#" class="w3-bar-item w3-button">Link 2</a>
-        <a href="#" class="w3-bar-item w3-button">Link 3</a>
-    </div>
+  <div class="w3-bar w3-light-grey">
+    <button href="#" (click)="scrollToSelection($event)" class="w3-bar-item w3-button home-nav">Home</button>
+    <button href="#" (click)="scrollToSelection($event)" class="w3-bar-item w3-button our-places-nav">Our places</button>
+    <!-- <button href="#" class="w3-bar-item w3-button">Empty</button> -->
+    <button href="#" (click)="scrollToSelection($event)" class="w3-bar-item w3-button features-nav">Features</button>
+    <button href="#" (click)="scrollToSelection($event)" class="w3-bar-item w3-button presentation-nav">Presentation</button>
+  </div>
 </div>
 
 <div class="w3-padding-64 w3-white">
-    <div class="w3-row-padding">
-        <div class="w3-col l8 m6 camera-container">
-            <h1 class="w3-jumbo">
-                <b>The App</b>
-            </h1>
-            <h1 class="w3-xxxlarge w3-text-green">
-                <b>Why use it?</b>
-            </h1>
-            <app-camera (findPicture)="findPicture($event)"></app-camera>
-            <p class="info-about-app">
-                <span class="w3-xlarge">Take photos and learn about the surrounding landmarks. cbsjbcs kjcbsjcbs djcbdskcb sdkjcbsdjc bsdkcbs djcbsk dcb sd jcbsdj sksbd ksbd
-                </span>
-            </p>
-            <app-popup-background [showPopup]="showPopup|async" (togglePopupVisibility)="togglePopup()" [showCloseButton]="true">
-                <app-figure-view [viewModel]="figureViewModel | async"></app-figure-view>
-            </app-popup-background>
-        </div>
+  <div class="w3-row-padding">
+    <div class="w3-col l8 m6 camera-container">
+      <h1 id="home" class="w3-jumbo" style="padding-top: 3%;">
+        <b>The App</b>
+      </h1>
+      <h1 class="w3-xxxlarge w3-text-green">
+        <b>Why use it?</b>
+      </h1>
+      <app-camera (findPicture)="findPicture($event)"></app-camera>
+      <p class="info-about-app">
+        <span class="w3-xlarge">Take photos and learn about the surrounding landmarks. cbsjbcs kjcbsjcbs djcbdskcb sdkjcbsdjc bsdkcbs djcbsk dcb
+          sd jcbsdj sksbd ksbd
+        </span>
+      </p>
+      <app-popup-background [showPopup]="showPopup|async" (togglePopupVisibility)="togglePopup()" [showCloseButton]="true">
+        <app-figure-view [viewModel]="figureViewModel | async"></app-figure-view>
+      </app-popup-background>
     </div>
+  </div>
 </div>
 
 <div class="w3-container w3-padding-64 w3-white w3-center">
-    <h1 class="w3-jumbo">
-        <b>Our places</b>
-    </h1>
-    <p></p>
-    <app-google-map [markers]="markers | async"></app-google-map>
+  <h1 id="our-places" class="w3-jumbo" style="padding-top: 3%">
+    <b>Our places</b>
+  </h1>
+  <p></p>
+  <app-google-map [markers]="markers | async"></app-google-map>
 
 </div>
 
@@ -46,16 +48,16 @@
 <app-feature></app-feature>
 
 <div class="w3-container w3-padding-64 w3-white w3-center">
-    <h1 class="w3-jumbo">
-        <b>Prensentation</b>
-    </h1>
-    <iframe src="https://docs.google.com/presentation/d/e/2PACX-1vSdIdF5Mr59cKmxzQ8ZXjy7jHpHRZZxyzAd-RuawUZw9T575g4CK7m_t4qZtEKK47gUWUWqNfbcE23S/embed?start=false&loop=false&delayms=5000" frameborder="0" width="960" height="569" allowfullscreen="true" mozallowfullscreen="true"
-        webkitallowfullscreen="true">
+  <h1 id="presentation" class="w3-jumbo" style="padding-top: 3%">
+    <b>Prensentation</b>
+  </h1>
+  <iframe src="https://docs.google.com/presentation/d/e/2PACX-1vSdIdF5Mr59cKmxzQ8ZXjy7jHpHRZZxyzAd-RuawUZw9T575g4CK7m_t4qZtEKK47gUWUWqNfbcE23S/embed?start=false&loop=false&delayms=5000"
+    frameborder="0" width="960" height="569" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true">
   </iframe>
 </div>
 
 <footer class="w3-container w3-padding-32 w3-light-grey w3-center w3-xlarge">
-    <div class="w3-section">
-        <i class="fa fa-facebook-official w3-hover-opacity"></i>
-    </div>
+  <div class="w3-section">
+    <i class="fa fa-facebook-official w3-hover-opacity"></i>
+  </div>
 </footer>

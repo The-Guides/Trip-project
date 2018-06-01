@@ -58,4 +58,14 @@ export class FigureComponent implements OnInit {
   public togglePopup() {
     this.dispatcher.dispatch(new TogglePopup(false));
   }
+  public scrollToSelection(eventData) {
+    let selectedNav = eventData.target.className;
+    let lastClass = selectedNav.substring(selectedNav.lastIndexOf(' ') + 1);
+    let wantedSection = lastClass.substring(0, lastClass.lastIndexOf('-'));
+
+    document.querySelector('#' + wantedSection).scrollIntoView({
+      behavior: 'smooth'
+    });
+  }
+
 }
