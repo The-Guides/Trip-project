@@ -3,7 +3,8 @@ import { FigureViewModel } from './figure-view/figure-view.viewmodel';
 import { Observable } from 'rxjs';
 import { Marker } from '../shared/google-map/marker';
 
-export const FigureViewModelSelector = new InjectionToken<Observable<FigureViewModel>>('This will provide the view model');
-export const ShowPopupSelector = new InjectionToken<Observable<boolean>>('This will the selector for the show popup');
-export const LoadingSelector = new InjectionToken<Observable<boolean>>('This will the selector for the show popup');
-export const MarkersSelector = new InjectionToken<Observable<Marker[]>>('This will the selector for the show popup');
+export const FigureViewModelSelector = new InjectionToken<Observable<FigureViewModel>>('Provider for the view model');
+export const TogglePopupSelector = new InjectionToken<Observable<boolean>>('Provider for the selector for the popup');
+export const ToggleLoadingSelector = new InjectionToken<Observable<boolean>>('Provider for the selector for the toggleLoading screen');
+export const MarkersSelector = new InjectionToken<Observable<Marker[]>>('Provider for the selector for the supported monuments markers');
+export const FoundedMarkersSelector = new InjectionToken<Observable<Marker[]>>('Provider for the selector for the foundedMarkers');

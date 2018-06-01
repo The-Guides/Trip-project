@@ -1,7 +1,8 @@
 <div id="map-container">
     <agm-map [latitude]="lat" [longitude]="lng" [zoom]="zoom" [disableDefaultUI]="false" [zoomControl]="false">
 
-        <agm-marker *ngFor="let m of markers; let i = index" (markerClick)="clickedMarker(m.label, i)" [latitude]="m.lat" [longitude]="m.lng" [label]="m.label" [markerDraggable]="m.draggable" (dragEnd)="markerDragEnd(m, $event)">
+        <agm-marker *ngFor="let m of markers; let i = index" (markerClick)="clickedMarker(m.label, i)" [latitude]="m.latitude" [longitude]="m.longitude"
+            [label]="m.label" [markerDraggable]="m.draggable" (dragEnd)="markerDragEnd(m, $event)">
 
             <agm-info-window>
                 <strong>{{m.name}}</strong>
@@ -9,6 +10,10 @@
 
         </agm-marker>
 
+        <agm-marker *ngFor="let m of foundedMarkers; let i = index" (markerClick)="clickedMarker(m.label, i)" [latitude]="m.latitude"
+            [longitude]="m.longitude" [label]="m.label" [markerDraggable]="m.draggable" (dragEnd)="markerDragEnd(m, $event)" >
+
+        </agm-marker>
         <agm-circle [latitude]="lat + 0.3" [longitude]="lng" [radius]="5000" [fillColor]="'red'" [circleDraggable]="true" [editable]="true">
         </agm-circle>
 

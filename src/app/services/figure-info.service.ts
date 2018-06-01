@@ -8,7 +8,7 @@ import { Marker } from "../shared/google-map/marker";
 @Injectable()
 export class FigureInfoService {
   private readonly url = "https://trip-205110.firebaseio.com/figures/";
-  constructor(private db: AngularFireDatabase) {}
+  constructor(private db: AngularFireDatabase) { }
 
   public getFigureDetails(figureId: string) {
     return this.db.object("figures/" + figureId).valueChanges();
@@ -22,8 +22,8 @@ export class FigureInfoService {
         map((response: FigureViewModel[]) => {
           return response.map(figureVm => {
             return {
-              lat: figureVm.locations.latitude,
-              lng: figureVm.locations.longitude,
+              latitude: figureVm.locations.latitude,
+              longitude: figureVm.locations.longitude,
               draggable: false,
               name: figureVm.name
             } as Marker;

@@ -1,7 +1,7 @@
 
 export interface Marker {
-  lat: number;
-  lng: number;
+  latitude: number;
+  longitude: number;
   label?: string;
   draggable: boolean;
   name: string;
