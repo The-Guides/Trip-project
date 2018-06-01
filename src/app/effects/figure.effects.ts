@@ -56,8 +56,9 @@ export class FigureEffects {
                 // when we have the response we want to hide the loading screen
                 from([
                     new LoadFigureViewModel(response),
+                    new ToggleLoading(false),
                     new TogglePopup(true),
-                    new ToggleLoading(false)])));
+                ])));
 
     @Effect()
     public onFindFigureFailed = this.actions$
