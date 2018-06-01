@@ -23,8 +23,13 @@
       </h1>
       <app-camera (findPicture)="findPicture($event)"></app-camera>
       <p class="info-about-app">
-        <span class="w3-xlarge">Take photos and learn about the surrounding landmarks. cbsjbcs kjcbsjcbs djcbdskcb sdkjcbsdjc bsdkcbs djcbsk dcb
-          sd jcbsdj sksbd ksbd
+        <span class="w3-xlarge">Take photos and learn about the surrounding landmarks. We have 2 opportunities to use our app. You can choose from
+          different plans for your adventure trip. We offer you to pick out one city and start discovering it. We have 2
+          types of plans. The Free Plan does not give you the guide for the city and does not reveal the possible places
+          to visit. If you can find and capture the sight only then you will receive information for the place and unlock
+          it. The Premium Plan unlocks the guide feature which based on machine learning creates your personal path through
+          the city and shows you all of the possible places. You can organize your trip alone because you will see the full
+          path.
         </span>
       </p>
       <app-popup-background [showPopup]="showPopup|async" (togglePopupVisibility)="togglePopup()" [showCloseButton]="true">
