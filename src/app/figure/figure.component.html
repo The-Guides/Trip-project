@@ -1,57 +1,77 @@
 <app-popup-background [showCloseButton]="false" [showPopup]="loadingScreen | async">
-    <app-loading></app-loading>
+  <app-loading></app-loading>
 </app-popup-background>
 
 <div class="w3-top">
-    <div class="w3-bar w3-light-grey">
-        <button href="#" (click)="scrollToSelection($event)" class="w3-bar-item w3-button home-nav">Home</button>
-        <button href="#" (click)="scrollToSelection($event)" class="w3-bar-item w3-button our-places-nav">Our places</button>
-        <!-- <button href="#" class="w3-bar-item w3-button">Empty</button> -->
-        <button href="#" (click)="scrollToSelection($event)" class="w3-bar-item w3-button features-nav">Features</button>
-    </div>
+  <div class="w3-bar w3-light-grey">
+    <button href="#" (click)="scrollToSelection($event)" class="w3-bar-item w3-button home-nav">Home</button>
+    <button href="#" (click)="scrollToSelection($event)" class="w3-bar-item w3-button our-places-nav">Our places</button>
+    <!-- <button href="#" class="w3-bar-item w3-button">Empty</button> -->
+    <button href="#" (click)="scrollToSelection($event)" class="w3-bar-item w3-button features-nav">Features</button>
+  </div>
 </div>
 
 <div class="w3-padding-64 w3-white">
   <div class="w3-row-padding">
     <div class="w3-col l8 m6 camera-container">
-      <h1 id="home" class="w3-jumbo" style="padding-top: 3%;">
-        <b>The App</b>
+      <h1 id="home" class="w3-jumbo" style="padding-top: 30px">
+        <b>The Guides</b>
       </h1>
       <h1 class="w3-xxxlarge w3-text-green">
-        <b>Why use it?</b>
+        <b>Take photos and learn about the surrounding landmarks.</b>
       </h1>
       <app-camera (findPicture)="findPicture($event)"></app-camera>
       <p class="info-about-app">
-        <span class="w3-xlarge">Take photos and learn about the surrounding landmarks. We have 2 opportunities to use our app. You can choose from
-          different plans for your adventure trip. We offer you to pick out one city and start discovering it. We have 2
-          types of plans. The Free Plan does not give you the guide for the city and does not reveal the possible places
-          to visit. If you can find and capture the sight only then you will receive information for the place and unlock
-          it. The Premium Plan unlocks the guide feature which based on machine learning creates your personal path through
-          the city and shows you all of the possible places. You can organize your trip alone because you will see the full
-          path.
+        <span class="w3-xlarge">
+          <hr> You can choose from different plans for your adventure trip. Only pick out one city and start discovering it.
+          <hr>
+          <br><span>Two types of plans in case of your needs.</span>
+          <br>
+          <div class="w3-card-4 w3-col l5 m6" style="margin-right: 14%;">
+            <header class="w3-container w3-text-green">
+              <h1>Free Plan</h1>
+            </header>
+            <hr>
+            <div class="w3-container">
+              <p>The free plan does not give you the guide for the city and does not reveal the possible places to visit. If
+                you can find and capture the sight only then you will receive information for the place and unlock it.</p>
+            </div>
+          </div>
+          <div class="w3-card-4 w3-col l5 m6">
+            <header class="w3-container w3-text-green">
+              <h1>The Premium Plan</h1>
+            </header>
+            <hr>
+            <div class="w3-container">
+              <p>The Premium Plan unlocks the guide feature which based on machine learning creates your personal path through
+                the city and shows you all of the possible places. You can organize your trip alone because you will see
+                the full path.
+              </p>
+            </div>
+          </div>
         </span>
       </p>
       <app-popup-background [showPopup]="showPopup|async" (togglePopupVisibility)="togglePopup()" [showCloseButton]="true">
         <app-figure-view [viewModel]="figureViewModel | async"></app-figure-view>
       </app-popup-background>
     </div>
-</div>
+  </div>
 
-<div class="w3-container w3-padding-64 w3-white w3-center">
-    <h1 id="our-places" class="w3-jumbo" style="padding-top: 3%">
-        <b>Our places</b>
+  <div class="w3-container w3-padding-64 w3-white w3-center">
+    <h1 id="our-places" class="w3-jumbo" style="padding-top: 30px">
+      <b>Our places</b>
     </h1>
     <p></p>
     <app-google-map [markers]="markers | async" [foundedMarkers]="foundedMarkers | async"></app-google-map>
 
-</div>
+  </div>
 
-<app-team></app-team>
+  <app-team></app-team>
 
-<app-feature></app-feature>
+  <app-feature></app-feature>
 
-<footer class="w3-container w3-padding-32 w3-light-grey w3-center w3-xlarge">
+  <footer class="w3-container w3-padding-32 w3-light-grey w3-center w3-xlarge">
     <div class="w3-section">
-        <i class="fa fa-facebook-official w3-hover-opacity"></i>
+      <i class="fa fa-facebook-official w3-hover-opacity"></i>
     </div>
-</footer>
+  </footer>
